@@ -1,0 +1,40 @@
+<？php
+/ **
+ * Copyright 2016 Google Inc.
+ *
+ * Apacheライセンス、バージョン2.0（「ライセンス」）の下でライセンスされています。
+ *ライセンスに準拠している場合を除き、このファイルを使用することはできません。
+ *ライセンスのコピーは以下で入手できます。
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *適用法で要求されている場合、または書面で同意されている場合を除き、ソフトウェア
+ *ライセンスに基づいて配布されるものは、「現状のまま」で配布されます。
+ *明示または黙示を問わず、いかなる種類の保証または条件もありません。
+ *許可を管理する特定の言語については、ライセンスを参照してください。
+ *ライセンスに基づく制限。
+ * /
+＃ [vision_quickstartを開始]
+＃が作曲してインストールされたライブラリのためのオートローダを含み
+ __DIR__が 必要です。 ' /vendor/autoload.php ' ;
+＃ Googleクラウドクライアントライブラリをインポート
+使用 Googleの\クラウド\ビジョン\ V1を\ ImageAnnotatorClient。
+＃クライアントをインスタンス化します
+$ imageAnnotator  =  new  ImageAnnotatorClient（）;
+＃注釈を付ける画像ファイルの名前
+$ fileName  =  ' test / data / wakeupcat.jpg ' ;
+＃注釈を付ける画像を準備する
+$ image  =  file_get_contents（$ fileName）;
+＃画像ファイルのラベル検出を実行
+$ response  =  $ imageAnnotator- > labelDetection（$ image）;
+$ labels  =  $ response- > getLabelAnnotations（）;
+if（$ labels）{
+    echo（" Labels：" 。 PHP_EOL）;
+    foreach（$ labels  as  $ label）{
+        echo（$ label- > getDescription（）。 PHP_EOL）;
+    }
+} else {
+    エコー（'ラベルが見つからない' 。 PHP_EOL）;
+}
+＃ [vision_quickstartの終了]
+ $ labelsを返します。
